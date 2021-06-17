@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { graphql } from "react-apollo";
 import query from "../queries/CurrentUser";
 import mutation from "../mutations/Logout";
+import { hashHistory } from "react-router";
 
 class Header extends Component {
   onLogoutClick() {

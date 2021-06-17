@@ -7,6 +7,8 @@ import { Router, hashHistory, Route, IndexRoute } from "react-router";
 import App from "./Components/App";
 import LoginForm from "./Components/LoginForm";
 import SignupForm from "./Components/SingupForm";
+import Dashboard from "./Components/Dashboard";
+import requireAuth from "./Components/requireAuth";
 
 //Apollo client doesn't send along cookies whenever we send a req to graphql. If we dont send cookies then the graph ql response doesnt come with a cookie by default so we wont know the currently logged user state if they are logged in or not like how we see in the graphiql
 const networkInterface = new createNetworkInterface({
@@ -28,6 +30,7 @@ const Root = () => {
         <Route path="/" component={App} />
         <Route path="login" component={LoginForm} />
         <Route path="signup" component={SignupForm} />
+        <Route path="dashboard" component={requireAuth(Dashboard)} />
       </Router>
     </ApolloProvider>
   );
